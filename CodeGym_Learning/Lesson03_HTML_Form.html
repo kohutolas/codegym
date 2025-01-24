@@ -1,0 +1,135 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Lesson 03: Form and Table</title>
+  <style>
+    button {
+      background-color: whitesmoke;
+      border: 1px solid lightskyblue;
+    }
+
+    ul {
+      list-style-type: none;
+      padding: 0;
+    }
+
+    ul > li:before {
+      content: "- ";
+    }
+
+    .text-underline-none {
+      text-decoration: none;
+    }
+  </style>
+</head>
+<body>
+<h1>Lesson 03: Form and Table</h1>
+<ul>
+  <li>
+    form
+    <ul>
+      <li>action</li>
+      <li>name</li>
+      <li>method</li>
+    </ul>
+  </li>
+  <li><a id="gg" class="text-underline-none" href="https://google.com.vn" title="Chuyển hướng đến Google">Liên kết tới
+    Google</a></li>
+  <li></li>
+  <li></li>
+  <li></li>
+</ul>
+<!--Form-->
+<form action="">
+  <fieldset>
+    <legend>Information</legend>
+    <p>
+      <label for="firstName">First Name:</label>
+      <input type="text" name="fname" id="firstName" placeholder="Enter name">
+    </p>
+    <p>
+      <label for="lastName">Last Name:</label>
+      <input type="text" name="lname" id="lastName">
+    </p>
+    <!--    <input type="submit" value="Submit">-->
+    <button type="submit"><img src='images/send-message.png'></button>
+  </fieldset>
+</form>
+<form action="" method="post">
+    <p>
+        <label for="username">Username:</label>
+<!--        <input type="text" name="username" id="username" value="Nguyễn Trâm Anh" disabled>-->
+        <input type="text" name="username" id="username" value="Nguyễn Trâm Anh">
+    </p>
+    <p>
+        <label for="password">Password</label>
+        <input type="password" name="password" id="password">
+    </p>
+    <button type="submit">Sign in</button>
+<!--    <input type="reset" value="Reset">-->
+    <button type="reset">Reset</button>
+</form>
+<form action="">
+  <p>Chọn giới tính của bạn</p>
+  <label for="male"><input type="radio" name="gender" id="male" checked> Nam</label>
+  <label for="female"><input type="radio" name="gender" id="female"> Nữ</label>
+  <label for="unknown"><input type="radio" name="gender" id="unknown"> Không xác định</label>
+
+  <p>Chọn ngôn ngữ yêu thích</p>
+  <label for="html"><input type="checkbox" name="favorite" id="html"> HTML</label><br>
+  <label for="css"><input type="checkbox" name="favorite" id="css"> CSS</label><br>
+  <label for="js"><input type="checkbox" name="favorite" id="js"> JavaScript</label>
+  <input type="button" onclick="fireworks()" value="Click me!">
+
+
+  <select name="" id="province">
+    <option value="">Ha Noi</option>
+    <option value="">TP HCM</option>
+    <option value="">Da Nang</option>
+  </select>
+  <textarea rows="10" cols="50" style="width: 100%">
+
+    </textarea>
+</form>
+<script src="https://cdn.jsdelivr.net/npm/@tsparticles/confetti@3.0.3/tsparticles.confetti.bundle.min.js"></script>
+<script>
+  fetch('https://provinces.open-api.vn/api/').then((resp) => resp.json()).then((data) => {
+    document.getElementById("province").innerHTML = data.map((item) => `<option>${item.name}</option>`)
+  })
+  function fireworks() {
+    const duration = 15 * 1000,
+            animationEnd = Date.now() + duration,
+            defaults = { startVelocity: 30, spread: 360, ticks: 60, zIndex: 0 };
+
+    function randomInRange(min, max) {
+      return Math.random() * (max - min) + min;
+    }
+
+    const interval = setInterval(function() {
+      const timeLeft = animationEnd - Date.now();
+
+      if (timeLeft <= 0) {
+        return clearInterval(interval);
+      }
+
+      const particleCount = 50 * (timeLeft / duration);
+
+      // since particles fall down, start a bit higher than random
+      confetti(
+              Object.assign({}, defaults, {
+                particleCount,
+                origin: { x: randomInRange(0.1, 0.3), y: Math.random() - 0.2 },
+              })
+      );
+      confetti(
+              Object.assign({}, defaults, {
+                particleCount,
+                origin: { x: randomInRange(0.7, 0.9), y: Math.random() - 0.2 },
+              })
+      );
+    }, 250);
+  }
+</script>
+</body>
+</html>

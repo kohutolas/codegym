@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>simpleform</title>
+    <style>
+        .wufoo {
+            font-family: "Lucida Grande","Lucida Sans Unicode", Tahoma, sans-serif;
+        }
+        button {
+            background-color: #cbe7ff;
+            margin-left: 40px;
+            padding: 8px;
+            padding-left: 20px;
+            padding-right: 20px;
+            border: #276aa3 solid 1px;
+            border-radius:8px;
+        }
+        select {
+            margin-left: 40px;
+        }
+        h2 {
+            margin-left: 40px;
+        }
+        p {
+            margin-left: 40px;
+        }
+        input {
+            margin-left: 0px;
+        }
+    </style>
+</head>
+<body>
+    <h2>Order Form</h2>
+    <p>What  you like to buy?</p>
+    <select>
+        <option>A</option>
+        <option>B (+  0.5$)</option>
+        <option>C (+  0.5$)</option>
+    </select>
+
+    <p>How many would you like to order?</p>
+       <p><input type="radio" name="rd"/> 1 - $10 </br>
+        <input type="radio" name="rd"/> 2 - $20 </br>
+        <input type="radio" name="rd"/> 3 - $25 </br></p>
+
+    <p>Name <span style="color: red">*</span> </p>
+      <p><input type = "text" name="firstname" placeholder="FirstName" size="16"/>
+      <input type = "text" name="lastname" placeholder="Lastname" size="16"/></p>
+
+    <p> Email</p>
+    <p> <input type = "email" name="email" placeholder="Email" size="34"/></p>
+
+    <p> Phone number</p>
+    <p><input type = "tel" name="phone1" placeholder="+84" size="4x"/>
+        <input type = "tel" name="phone2" placeholder="" size="14"/>
+        <input type = "tel" name="phone3" placeholder="" size="14"/> </br></p>
+
+<!--<p> <input type="button" name="btsubmit" value="Submit" /></p>-->
+    <button>SUBMIT</button>
+</body>
+</html>
